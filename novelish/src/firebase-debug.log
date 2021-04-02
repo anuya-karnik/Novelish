@@ -1,0 +1,45 @@
+[debug] [2021-04-02T20:29:04.606Z] ----------------------------------------------------------------------
+[debug] [2021-04-02T20:29:04.608Z] Command:       /usr/local/bin/firebase /Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2021-04-02T20:29:04.608Z] CLI Version:   9.8.0
+[debug] [2021-04-02T20:29:04.609Z] Platform:      darwin
+[debug] [2021-04-02T20:29:04.609Z] Node Version:  v12.2.0
+[debug] [2021-04-02T20:29:04.609Z] Time:          Fri Apr 02 2021 16:29:04 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-04-02T20:29:04.609Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-04-02T20:29:04.611Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-04-02T20:29:04.636Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-04-02T20:29:04.636Z] > authorizing via signed-in user
+[debug] [2021-04-02T20:29:04.636Z] [iam] checking project novelish-579 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-04-02T20:29:04.637Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-04-02T20:29:04.637Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-02T20:29:04.840Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 02 Apr 2021 20:29:04 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-02T20:29:04.873Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/novelish-579:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-04-02T20:29:05.428Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-04-02T20:29:05.428Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2021-04-02T20:29:05.484Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 02 Apr 2021 20:29:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=77","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-02T20:29:05.485Z] [iam] error while checking permissions, command may fail: FirebaseError: Authorization failed. This account is missing the following required permissions on project novelish-579:
+
+  firebase.projects.get
+  firebasehosting.sites.update
+[debug] [2021-04-02T20:29:05.486Z] > refreshing access token with scopes: []
+[debug] [2021-04-02T20:29:05.486Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-04-02T20:29:05.655Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 02 Apr 2021 20:29:05 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-04-02T20:29:05.683Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/novelish-579 [none]
+[debug] [2021-04-02T20:29:06.386Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/novelish-579 403
+[debug] [2021-04-02T20:29:06.387Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/novelish-579 {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2021-04-02T20:29:06.387Z] HTTP Error: 403, The caller does not have permission
+[debug] [2021-04-02T20:29:06.540Z] FirebaseError: HTTP Error: 403, The caller does not have permission
+    at module.exports (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Client.doRequest (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:89:5)
+    at async Client.request (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:96:20)
+    at async Object.getFirebaseProject (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/management/projects.js:289:21)
+    at async Object.getDefaultHostingSite (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/getDefaultHostingSite.js:8:21)
+    at async requireHostingSite (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/requireHostingSite.js:9:18)
+    at async Object.fn (/Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/commands/deploy.js:66:9)
+    at async /Users/nikitabadhwar/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/command.js:161:17
+[error] 
+[error] Error: Failed to get Firebase project novelish-579. Please make sure the project exists and your account has permission to access it.
