@@ -12,7 +12,8 @@ function Search() {
           <form action="">
             <input 
             type="text"
-            placeholder="Search..."/>
+            placeholder="Search..."
+            />
             <button type="submit">Submit</button>
           </form>
         </div>
