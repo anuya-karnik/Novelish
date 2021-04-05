@@ -1,8 +1,8 @@
 import React from "react";
 
-function About() {
+function Search() {
   return (
-    <div className="about">
+    <div className="search">
         <div className="jumbotron text-center">
             <h1>Search page</h1>
         </div>
@@ -10,10 +10,7 @@ function About() {
             <div className="row">
                 <div className="col-sm-12 text-center">
                 <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book.
+                Page for Searching Books and Adding them to a To-Read List
                 </p>
 
                 </div>
@@ -26,4 +23,4 @@ function About() {
   );
 }
 
-export default About;
+export default Search;
