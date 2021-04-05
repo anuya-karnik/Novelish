@@ -12,6 +12,8 @@ function Home() {
     setText('');
   }
 
+  // creates a list of items
+  
   function createList(item) {
     let itemlist = document.getElementById('get-list')
     let listItem = document.createElement('LI')
