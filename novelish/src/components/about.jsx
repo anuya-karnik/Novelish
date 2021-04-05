@@ -3,12 +3,12 @@ import React from "react";
 function About() {
   return (
     <div className="about">
-        <div class="jumbotron text-center">
+        <div className="jumbotron text-center">
             <h1>About page</h1>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 text-center">
+        <div className="container">
+            <div className="row">
+                <div className="col-sm-12 text-center">
                 <p>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy text
