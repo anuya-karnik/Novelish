@@ -3,6 +3,8 @@ import fire from "../fire";
 
 function Home() {
 
+  // https://reactjs.org/docs/hooks-state.html
+
   const [userInput, setText] = useState('');
 
   // https://firebase.google.com/docs/database/admin/save-data#getting-the-unique-key-generated-by-push
@@ -13,7 +15,7 @@ function Home() {
   }
 
   // creates a list of items
-  
+
   function createList(item) {
     let itemlist = document.getElementById('get-list')
     let listItem = document.createElement('LI')
@@ -28,7 +30,7 @@ function Home() {
 
       function (snapshot) {
         console.log(snapshot.val())
-        snapshot.forEach(function(data){
+        snapshot.forEach(function (data) {
           console.log(data.val)
           createList(data.val())
         })
@@ -38,46 +40,48 @@ function Home() {
         console.log("The read failed" + errorObject.code)
       }
     )
-}
+  }
 
 
 
-return (
-  <div className="home">
-    <div className="jumbotron text-center">
-      <h1>Home Page</h1>
-    </div>
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-12 text-center">
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book.
+  return (
+    <div className="home">
+      <div className="jumbotron text-center">
+        <h1>Home Page</h1>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12 text-center">
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book.
                 </p>
 
+          </div>
         </div>
       </div>
-    </div>
 
-    <div className="input-database">
-      <input
-        type="text"
-        className="textinput"
-        value={userInput}
-        onChange={e => setText(e.target.value)} />
-      <button className="submit" type="submit" onClick={dbpush}>Submit</button>
-    </div>
+      <div className="col-sm-12 text-center">
+        <div className="input-database">
+          <input
+            type="text"
+            className="textinput"
+            value={userInput}
+            onChange={e => setText(e.target.value)} />
+          <button className="submit" type="submit" onClick={dbpush}>Submit</button>
+        </div>
 
-    <div className="output-database">
-      <button className="dataget" onClick={dbget}>Get Item List</button>
-      <ul id="get-list" className="output-words">
-      </ul>
-    </div>
+        <div className="output-database">
+          <button className="dataget" onClick={dbget}>Get Item List</button>
+          <ul id="get-list" className="output-words">
+          </ul>
+        </div>
 
-  </div>
-);
+      </div>
+    </div>
+  );
 }
 
 export default Home;
