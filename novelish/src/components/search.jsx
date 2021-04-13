@@ -5,6 +5,8 @@ function Search() {
 
   // https://reactjs.org/docs/hooks-state.html
   const [keyword, setText] = useState('')
+  let responsedata= "";
+
 
   // https://developers.google.com/books/docs/v1/using#PerformingSearch
 
@@ -13,9 +15,27 @@ function Search() {
     request.get('https://www.googleapis.com/books/v1/volumes')
       .query({ q: keyword })
       .then((data) => {
-        console.log(data)
+        responsedata = data.body.items;
+        console.log("here", responsedata);
+        console.log(responsedata[1].volumeInfo.imageLinks);
+        let i = 0;
+        while(i < responsedata.length){
+          createList(responsedata[i]);
+          i += 1;
+        }
       })
     setText('')
+    
+  }
+
+  function createList(item) {
+    let itemlist = document.getElementById('get-list')
+    let listItem = document.createElement('LI')
+    listItem.innerHTML = item.volumeInfo["title"]
+    let img = document.createElement('img');
+    img.src = item.volumeInfo.imageLinks["thumbnail"]
+    itemlist.append(listItem)
+    itemlist.append(img);
   }
 
   return (
@@ -43,8 +63,13 @@ function Search() {
           <button className="submit" type="submit" onClick={getBooks}>Submit</button>
         </div>
       </div>
+      
+      <div className="col-sm-12 text-center" id="results">
+        <ul id="get-list" className="output-words"/>
 
+      </div>
 
+      
 
     </div>
   );
