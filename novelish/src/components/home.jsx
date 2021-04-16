@@ -42,8 +42,6 @@ function Home() {
     )
   }
 
-
-
   return (
     <div className="home">
       <div className="jumbotron text-center">
@@ -108,13 +106,6 @@ function Home() {
                 <button type="button" class="btn btn-primary">Currently Reading</button>
                 <button type="button" class="btn btn-danger">Remove from List </button>
                 <button type="button" class="btn btn-success">Done Reading!</button>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Book title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
               </div>
             </div>
           </div>
