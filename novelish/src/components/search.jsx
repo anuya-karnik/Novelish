@@ -12,7 +12,9 @@ function Search() {
 
   function getBooks() {
     console.log(keyword)
-    request.get('https://www.googleapis.com/books/v1/volumes')
+    if (keyword){
+
+      request.get('https://www.googleapis.com/books/v1/volumes')
       .query({ q: keyword })
       .then((data) => {
         responsedata = data.body.items;
@@ -20,22 +22,46 @@ function Search() {
         console.log(responsedata[1].volumeInfo.imageLinks);
         let i = 0;
         while(i < responsedata.length){
-          createList(responsedata[i]);
+          createList(responsedata[i], i);
           i += 1;
         }
       })
     setText('')
+    }
+    else{
+      createList("", 0);
+    }
+   
     
   }
 
-  function createList(item) {
+
+
+  function createList(item, number) {
+
     let itemlist = document.getElementById('get-list')
-    let listItem = document.createElement('LI')
-    listItem.innerHTML = item.volumeInfo["title"]
-    let img = document.createElement('img');
-    img.src = item.volumeInfo.imageLinks["thumbnail"]
-    itemlist.append(listItem)
-    itemlist.append(img);
+    if (number === 0){
+      itemlist.innerHTML = "";
+    }
+
+    if (item) {
+    
+      let listItem = document.createElement('LI')
+      listItem.innerHTML = item.volumeInfo["title"]
+      let img = document.createElement('img');
+      img.src = item.volumeInfo.imageLinks["thumbnail"]
+      itemlist.append(listItem)
+      itemlist.append(img);
+
+    }
+
+    else{
+      let listItem = document.createElement('LI')
+      listItem.innerHTML = "Please enter a book title to search."
+      itemlist.append(listItem)
+    }
+
+
   }
 
   return (
@@ -59,14 +85,16 @@ function Search() {
             type="text"
             className="textinput"
             value={keyword}
-            onChange={e => setText(e.target.value)} />
+            onChange={e => setText(e.target.value)}/>
           <button className="submit" type="submit" onClick={getBooks}>Submit</button>
         </div>
       </div>
+
+
+  
       
       <div className="col-sm-12 text-center" id="results">
         <ul id="get-list" className="output-words"/>
-
       </div>
 
       
