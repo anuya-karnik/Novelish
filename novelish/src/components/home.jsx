@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import fire from "../fire";
 
 function Home() {
+  window.addEventListener('load', (event) => {
+    dbget();
+  })
 
   // https://reactjs.org/docs/hooks-state.html
 
@@ -23,15 +26,6 @@ function Home() {
 
   // creates a list of items
 
-  function createList(item) {
-    let itemlist = document.getElementById('get-list')
-    let listItem = document.createElement('LI')
-    listItem.innerHTML = item['bookname'] + ' by ' + item['author']
-    console.log(item['bookname'])
-    console.log(item['author'])
-    itemlist.append(listItem)
-  }
-  
   function createCards(item) {
     //readlist column
     let readlist = document.getElementById('readlist')
@@ -76,16 +70,14 @@ function Home() {
     cardBody.append(doneRead)
     cardBody.append(remRead)
   }
-  // https://firebase.google.com/docs/database/admin/retrieve-data#orderbychild
 
+  // https://firebase.google.com/docs/database/admin/retrieve-data#orderbychild
   function dbget() {
     fire.database().ref('user-input/data1').on('value',
 
       function (snapshot) {
         console.log(snapshot.val())
         snapshot.forEach(function (data) {
-          // console.log(data.val)
-          // createList(data.val())
           createCards(data.val())
         })
       },
@@ -98,7 +90,9 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="col-sm-12 text-center">
+
+      {/* TESTING DATABASE */}
+      {/* <div className="col-sm-12 text-center">
         <div className="input-database">
           <input
             type="text"
@@ -119,13 +113,14 @@ function Home() {
           </ul>
         </div>
 
-      </div>
-      <div className="header container">
-        <h1>This is the Headline</h1>
+      </div> */}
+      <div className="jumbotron text-center">
+        <h1>Welcome to Novelish</h1>
+        <h3>Your Space to Read, Grow and Explore</h3>
       </div>
       <div className="home container">
         <div className="row">
-        <div className="currentread col-4">
+          <div className="currentread col-4">
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">Currently Reading</h5>
@@ -135,21 +130,11 @@ function Home() {
             </div>
           </div>
           <div id="readlist" className="toread col-8">
-            <div className="list-controls container">
-              <div className="col"><h3>My Reading List</h3></div>
-              <div className="col"> <button type="button" className="btn btn-primary">Add New Book</button>
-              <button type="button" className="btn btn-primary">See Books to Read</button>
-              <button type="button" className="btn btn-primary">See Books Completed</button>
-            </div> 
-            </div>
-            {/* Remove this later! */}
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Card Template</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <button type="button" className="btn btn-primary">Currently Reading</button>
-                <button type="button" className="btn btn-success">Done Reading!</button>
-                <button type="button" className="btn btn-danger">Remove from List </button>
+            <div className="list-controls">
+              <h3 className="col">My Reading List</h3>
+              <div className="col"> <button type="button" className="btn btn-primary"> + Add New Book</button>
+                <button type="button" className="btn btn-primary">To Read</button>
+                <button type="button" className="btn btn-primary">Books Completed</button>
               </div>
             </div>
           </div>
