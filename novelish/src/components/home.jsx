@@ -121,11 +121,13 @@ function Home() {
       <div className="home container">
         <div className="row">
           <div className="currentread col-4">
-            <div className="card">
+            <div className="card mb-3">
+              <img src="Sample-Image.png" className="card-img-top" alt="sample" />
               <div className="card-body">
-                <h5 className="card-title">Currently Reading</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Space for displaying Info about Currently read book</h6>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <h5 className="card-title mb-3">Currently Read Book Title</h5>
+                <h6 className="card-subtitle mb-2 text-muted">Currently Read Book Title</h6>
+                {/* Maybe Use a Library for Saving Updated Time */}
+                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
           </div>
