@@ -8,21 +8,21 @@ function Home() {
 
   // https://reactjs.org/docs/hooks-state.html
 
-  const [userInput, setText] = useState('');
-  const [userInput1, setText1] = useState('');
+  // const [userInput, setText] = useState('');
+  // const [userInput1, setText1] = useState('');
 
   // https://firebase.google.com/docs/database/admin/save-data#getting-the-unique-key-generated-by-push
-  const dbpush = evt => {
-    // console.log(userInput);
-    // console.log(userInput1);
-    var userData = {
-      'bookname': userInput,
-      'author': userInput1
-    }
-    fire.database().ref('user-input/data1').push(userData);
-    setText('');
-    setText1('');
-  }
+  // const dbpush = evt => {
+  //   // console.log(userInput);
+  //   // console.log(userInput1);
+  //   var userData = {
+  //     'bookname': userInput,
+  //     'author': userInput1
+  //   }
+  //   fire.database().ref('user-input/data1').push(userData);
+  //   setText('');
+  //   setText1('');
+  // }
 
   // creates a list of items
 
