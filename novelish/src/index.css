@@ -78,6 +78,10 @@ h6 {
     border-radius: 25px;
 }
 
+/* .card-body {
+    border-radius: 25px 0px 25px 25px;
+} */
+
 .card-subtitle {
     padding-bottom: 30px;
 }
@@ -91,8 +95,18 @@ h6 {
     border-color: #545f33;
 }
 
+.add.btn:active{
+    background-color: #545f33 !important;
+    border-color: #545f33;
+}
+
 .btn-primary:hover {
     background-color: #ff8811;
+    border-color: #ff8811;
+}
+
+.btn-primary:active {
+    background-color: #ff8811 !important;
     border-color: #ff8811;
 }
 
@@ -146,3 +160,23 @@ h6 {
 .text-muted {
     font-family: 'Barlow', sans-serif;
 }
+
+input {
+    width: 300px;
+    border-radius: 10px;
+}
+
+button {
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: #75824f;
+    color: #ffffff;
+    width: 150px;
+    font-family: 'Barlow', sans-serif;
+}
+
+p,li{
+    font-family: 'Barlow', sans-serif;
+}
+
+
