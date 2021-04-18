@@ -19,8 +19,6 @@ function Search() {
       .query({ q: keyword })
       .then((data) => {
         responsedata = data.body.items;
-        console.log("here", responsedata);
-        console.log(responsedata[1].volumeInfo.imageLinks);
         let i = 0;
         while(i < responsedata.length){
           createList(responsedata[i], i);
@@ -53,10 +51,10 @@ function Search() {
     if (item) {
 
       let card = document.createElement('div');
-      card.className = 'card shadow cursor-pointer';
+      card.className = 'card  align-items-center';
 
       let cardBody = document.createElement('div');
-      cardBody.className = 'card-body';
+      cardBody.className = 'card-body shadow-none';
 
       let title = document.createElement('h5');
       title.innerText = item.volumeInfo["title"];
@@ -65,6 +63,20 @@ function Search() {
       let ig = document.createElement('img');
       ig.src = item.volumeInfo.imageLinks["thumbnail"];
       ig.className = 'card-img-top';
+      ig.id = 'bookimage';
+
+      let aut = document.createElement('p');
+      aut.innerText = item.volumeInfo["authors"];
+      aut.className = "text-muted";
+
+      let des = document.createElement('p');
+      des.innerText = item.searchInfo["textSnippet"];
+      des.className = "text-muted";
+
+      let cat = document.createElement('p');
+      cat.innerText = item.volumeInfo["categories"];
+      cat.className = "text-muted";
+
 
       let btn = document.createElement('button');
       let x = 3;
@@ -76,6 +88,9 @@ function Search() {
 
       card.appendChild(ig);
       cardBody.appendChild(title);
+      cardBody.appendChild(aut);
+      cardBody.appendChild(des);
+      cardBody.appendChild(cat);
       cardBody.appendChild(btn);
       card.appendChild(cardBody);
       cardContainer.appendChild(card);
@@ -91,8 +106,6 @@ function Search() {
   }
 
   function helper(x, y){
-        // console.log(userInput);
-    // console.log(userInput1);
     var userData = {
       'bookname': x,
       'author': y
