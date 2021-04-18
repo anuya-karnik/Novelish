@@ -5,6 +5,9 @@
 --indian-yellow: #e09f3e;
 --auburn: #9e2a2b;
 --rosewood: #540b0e;
+--Moss-Green:#75824f;
+--Dark-Orange: #ff8811;
+--Denim: #2E5EAA;
 }
 
 .results-grid{
@@ -14,6 +17,17 @@
 
 .btn {
     margin: 5px 10px 15px 0px;
+    box-shadow: 3px 3px 3px lightgray;
+}
+
+/* nav bar */
+.bg-dark {
+    background-color: #335c67 !important;
+}
+
+.navbar-expand .navbar-nav .nav-link{
+    padding: 0 1.5rem;
+
 }
 
 .jumbotron{
@@ -29,10 +43,42 @@ h1 {
     
 }
 
+.card-subtitle {
+    padding-bottom: 30px;
+}
 /* TODO: Also Change Hover Color */
 .add.btn {
-    background-color: #540b0e;
-    border-color: #540b0e;
+    background-color: #75824f;
+    border-color: #75824f;
+}
+.add.btn:hover {
+    background-color: #545f33;
+    border-color: #545f33;
+}
+
+.btn-primary:hover {
+    background-color: #ff8811;
+    border-color: #ff8811;
+}
+
+.read.btn {
+    background-color: #8C1A6A;
+    border-color: #f1960c;
+}
+
+.read.btn:hover {
+    background-color: #ff8811;
+    border-color: #ff8811;
+}
+
+.complete.btn {
+    background-color: #2E5EAA;
+    border-color: #2E5EAA;
+}
+
+.complete.btn:hover {
+    background-color: #104eb1;
+    border-color: #104eb1;
 }
 
 .btn-primary {
@@ -44,8 +90,18 @@ h1 {
     background-color: #335c67;
     border-color: #335c67;
 }
+
+.btn-success:hover {
+    background-color: #223e46;
+    border-color: #223e46;
+
+}
 .btn-danger {
     background-color: #9E2A2B;
     border-color: #9E2A2B;
+}
+
+.card-body {
+    box-shadow: 5px 5px 5px grey;
 }
 
