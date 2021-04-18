@@ -116,7 +116,7 @@ function Home() {
       </div> */}
       <div className="jumbotron text-center">
       {/* <img src="book.jpeg" alt= "book"> */}
-        <h1>Welcome to Novelish</h1>
+        <h1 class="welcome">Welcome to Novelish <span class = "blink"> |</span></h1>
         <h3>Your Space to Read, Grow and Explore</h3>
         
       </div>

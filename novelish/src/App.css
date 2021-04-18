@@ -14,3 +14,26 @@
   width: 150px;
   height: 200px;
 }
+
+.welcome{
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: type 7s steps(45);
+}
+
+@keyframes type{
+  from{width: 0;}
+  to{width: 100%;}
+}
+
+.blink{
+  visibility: visible;
+  animation: blinking 1s infinite;
+  font-size: 70px;
+}
+
+@keyframes blinking{
+  from, to {color: transparent;}
+  50% {color: black;}
+}
