@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import request from 'superagent';
+import fire from "../fire";
 
 function Search() {
 
@@ -66,10 +67,11 @@ function Search() {
       ig.className = 'card-img-top';
 
       let btn = document.createElement('button');
+      let x = 3;
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
-      btn.onclick = function (item){
-         console.log(item);
+      btn.onclick = function (){
+        helper(item.volumeInfo["title"], item.volumeInfo["title"]);
       }
 
       card.appendChild(ig);
@@ -86,6 +88,16 @@ function Search() {
       itemlist.append(listItem)
     }
 
+  }
+
+  function helper(x, y){
+        // console.log(userInput);
+    // console.log(userInput1);
+    var userData = {
+      'bookname': x,
+      'author': y
+    }
+    fire.database().ref('user-input/data1').push(userData);
 
   }
 
