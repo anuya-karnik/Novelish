@@ -124,7 +124,7 @@ function Home() {
           <div className="currentread col-4">
             <div className="card mb-3">
               <img src="Sample-Image.png" className="card-img-top" alt="sample" />
-              <div className="card-body">
+              <div className="left card-body">
                 <h5 className="card-title mb-3">Currently Read Book Title</h5>
                 <h6 className="card-subtitle mb-2 text-muted">Currently Read Book Title</h6>
                 {/* Maybe Use a Library for Saving Updated Time */}
