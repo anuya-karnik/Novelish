@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import fire from "../fire";
 
 function Home() {
@@ -26,6 +26,67 @@ function Home() {
 
   // creates a list of items
 
+  function addCurBook(bookname, author) {
+
+    // remove current book from currently reading file
+    var curData = {
+      'bookname': bookname,
+      'author': author
+    }
+
+    console.log(bookname, author)
+    
+    let curBookRef = fire.database().ref('user-input/curRead')
+    curBookRef.remove()
+      .then(function () {
+        console.log("Previous Book Removed")
+      })
+      .catch(function (error) {
+        console.log("Remove failed: " + error.message)
+      })
+
+    curBookRef.push(curData)
+    console.log('new book added')
+
+    updateCurrentBook()
+
+  }
+
+  function updateCurrentBook() {
+
+    let curBookRef = fire.database().ref('user-input/curRead')
+    let book = {}
+
+    curBookRef.on('value',
+    function (snapshot) {
+      console.log(snapshot.val())
+      snapshot.forEach(function (data) {
+        //only has one book
+        book = data.val()
+      })
+    },
+
+    function (errorObject) {
+      console.log("The read failed" + errorObject.code)
+    })
+
+    // let curImage = ""
+    let curTitle = document.getElementById('current-bookname')
+    curTitle.innerHTML = book['bookname']
+
+    let curAuthor = document.getElementById('current-author')
+    curAuthor.innerHTML = book['author']
+    //get the book from the database
+
+  }
+
+  function removeBook() {
+  }
+
+  function doneBook() {
+
+  }
+
   function createCards(item) {
     //readlist column
     let readlist = document.getElementById('readlist')
@@ -48,19 +109,30 @@ function Home() {
     curRead.type = 'button'
     curRead.className = 'btn btn-primary'
     curRead.innerHTML = 'Currently Reading'
+
     //TODO: curRead onClick function goes here
+    curRead.onclick = function () {
+      console.log(item)
+      addCurBook(item["bookname"], item["author"]);
+    }
 
     let doneRead = document.createElement('button')
     doneRead.type = 'button'
     doneRead.className = 'btn btn-success'
     doneRead.innerHTML = 'Done Reading!'
-    //TODO: curRead onClick function goes here
+    //TODO: doneRead onClick function goes here
+    doneRead.onclick = function () {
+      doneBook();
+    }
 
     let remRead = document.createElement('button')
     remRead.type = 'button'
     remRead.className = 'btn btn-danger'
     remRead.innerHTML = 'Remove from List'
     //TODO: curRead onClick function goes here
+    doneRead.onclick = function () {
+      removeBook();
+    }
 
     readlist.append(card)
     card.append(cardBody)
@@ -106,28 +178,25 @@ function Home() {
             onChange={e => setText1(e.target.value)} />
           <button className="submit" type="submit" onClick={dbpush}>Submit</button>
         </div>
-
         <div className="output-database">
           <button className="dataget" onClick={dbget}>Show Read List</button>
           <ul id="get-list" className="output-words">
           </ul>
         </div>
-
       </div> */}
       <div className="jumbotron text-center">
-      {/* <img src="book.jpeg" alt= "book"> */}
-        <h1 class="welcome">Welcome to Novelish <span class = "blink"> |</span></h1>
+        <h1>Welcome to Novelish</h1>
         <h3>Your Space to Read, Grow and Explore</h3>
-        
+
       </div>
       <div className="home container">
         <div className="row">
-          <div className="currentread col-4">
+          <div id="current-card" className="currentread col-4">
             <div className="card mb-3">
-              <img src="Sample-Image.png" className="card-img-top" alt="sample" />
-              <div className="left card-body">
-                <h5 className="card-title mb-3">Currently Read Book Title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Currently Read Book Title</h6>
+              <img id="current-image" src="Sample-Image.png" className="card-img-top" alt="sample" />
+              <div className="card-body">
+                <h5 id='current-bookname' className="card-title mb-3">Currently Read Book Title</h5>
+                <h6 id='current-author' className="card-subtitle mb-2 text-muted">Currently Read Book Title</h6>
                 {/* Maybe Use a Library for Saving Updated Time */}
                 <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
               </div>
