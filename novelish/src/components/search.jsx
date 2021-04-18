@@ -36,22 +36,44 @@ function Search() {
   }
 
 
-
   function createList(item, number) {
 
+    let cardContainer = document.getElementById("card-container");
     let itemlist = document.getElementById('get-list')
+
     if (number === 0){
-      itemlist.innerHTML = "";
+      cardContainer.innerHTML = "";
     }
 
     if (item) {
-    
-      let listItem = document.createElement('LI')
-      listItem.innerHTML = item.volumeInfo["title"]
-      let img = document.createElement('img');
-      img.src = item.volumeInfo.imageLinks["thumbnail"]
-      itemlist.append(listItem)
-      itemlist.append(img);
+
+      let card = document.createElement('div');
+      card.className = 'card shadow cursor-pointer';
+
+      let cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+
+      let title = document.createElement('h5');
+      title.innerText = item.volumeInfo["title"];
+      title.className = 'card-title';
+
+      let ig = document.createElement('img');
+      ig.src = item.volumeInfo.imageLinks["thumbnail"];
+      ig.className = 'card-img-top';
+
+      let btn = document.createElement('button');
+      btn.className = "btn btn-primary";
+      btn.innerHTML = "Add to read list";
+      btn.onclick = function (){
+         console.log("something happened!!!!")
+      }
+
+
+      cardBody.appendChild(title);
+      cardBody.appendChild(ig);
+      cardBody.appendChild(btn);
+      card.appendChild(cardBody);
+      cardContainer.appendChild(card);
 
     }
 
@@ -91,7 +113,9 @@ function Search() {
       </div>
 
 
-  
+      <div id="card-container">
+
+      </div>
       
       <div className="col-sm-12 text-center" id="results">
         <ul id="get-list" className="output-words"/>

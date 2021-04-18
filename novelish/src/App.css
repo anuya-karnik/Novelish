@@ -8,3 +8,8 @@
 #results > ul li{
   list-style-type: none;
 }
+
+.card-img-top{
+width: auto;
+height: auto;
+}
