@@ -67,7 +67,6 @@ function Search() {
       ig.className = 'card-img-top';
 
       let btn = document.createElement('button');
-      let x = 3;
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.onclick = function (){
