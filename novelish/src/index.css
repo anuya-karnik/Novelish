@@ -22,25 +22,60 @@
 
 /* nav bar */
 .bg-dark {
-    background-color: #335c67 !important;
+    background-color: #e09f3e !important;
 }
 
 .navbar-expand .navbar-nav .nav-link{
     padding: 0 1.5rem;
 
 }
+.navbar-brand {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+}
 
+.nav-link {
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+}
 .jumbotron{
     /* background-image: url("Sample-Image.png"); */
     /* background-image: url("../public/Sample-Image.png"); */
 }
 h1 {
-    color: #9E2A2B;
+    color: #000000;
+    /* font-family: 'Dancing Script', cursive;
+     */
+     font-family: 'Amatic SC', cursive;
+    font-size: 70px;
 }
 
+h3 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+}
+
+h5 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+}
+
+h6 {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+}
 .card {
     margin: 10px;
-    
+    margin-bottom: 30px;
+    border-radius: 25px;
+}
+
+.left.card-body {
+    border-radius: 25px 0px 25px 25px;
+}
+
+.card-body {
+    border-radius: 25px;
 }
 
 .card-subtitle {
@@ -63,12 +98,12 @@ h1 {
 
 .read.btn {
     background-color: #8C1A6A;
-    border-color: #f1960c;
+    border-color: #8C1A6A;
 }
 
 .read.btn:hover {
-    background-color: #ff8811;
-    border-color: #ff8811;
+    background-color: #6e0950;
+    border-color: #6e0950;
 }
 
 .complete.btn {
@@ -84,11 +119,13 @@ h1 {
 .btn-primary {
     background-color: #e09f3e;
     border-color: #e09f3e;
+    font-family: 'Barlow', sans-serif;
 }
 
 .btn-success {
     background-color: #335c67;
     border-color: #335c67;
+    font-family: 'Barlow', sans-serif;
 }
 
 .btn-success:hover {
@@ -99,9 +136,13 @@ h1 {
 .btn-danger {
     background-color: #9E2A2B;
     border-color: #9E2A2B;
+    font-family: 'Barlow', sans-serif;
 }
 
 .card-body {
-    box-shadow: 5px 5px 5px grey;
+    box-shadow: 5px 5px 5px lightgrey;
 }
 
+.text-muted {
+    font-family: 'Barlow', sans-serif;
+}
