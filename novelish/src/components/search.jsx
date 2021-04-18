@@ -5,7 +5,6 @@ function Search() {
 
   // https://reactjs.org/docs/hooks-state.html
   const [keyword, setText] = useState('')
-  // const [data, getBook] =  useState('')
   let responsedata= "";
 
 
