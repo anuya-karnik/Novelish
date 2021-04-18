@@ -52,7 +52,7 @@ function Search() {
     if (item) {
 
       let card = document.createElement('div');
-      card.className = 'card shadow cursor-pointer col-sm-2';
+      card.className = 'card shadow cursor-pointer';
 
       let cardBody = document.createElement('div');
       cardBody.className = 'card-body';
@@ -116,7 +116,7 @@ function Search() {
       </div>
 
 
-      <div id="card-container" className="container">
+      <div id="card-container" className="results-grid">
       </div>
       
       <div className="col-sm-12 text-center" id="results">

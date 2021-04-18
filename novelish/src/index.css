@@ -7,6 +7,10 @@
 --rosewood: #540b0e;
 }
 
+.results-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 
 .btn {
     margin: 5px 10px 15px 0px;
@@ -25,6 +29,7 @@ h1 {
     
 }
 
+/* TODO: Also Change Hover Color */
 .add.btn {
     background-color: #540b0e;
     border-color: #540b0e;
