@@ -117,6 +117,7 @@ function Home() {
       <div className="jumbotron text-center">
         <h1>Welcome to Novelish</h1>
         <h3>Your Space to Read, Grow and Explore</h3>
+        
       </div>
       <div className="home container">
         <div className="row">
@@ -134,9 +135,9 @@ function Home() {
           <div id="readlist" className="toread col-8">
             <div className="list-controls">
               <h3 className="col">My Reading List</h3>
-              <div className="col"> <button type="button" className="btn btn-primary"> + Add New Book</button>
-                <button type="button" className="btn btn-primary">To Read</button>
-                <button type="button" className="btn btn-primary">Books Completed</button>
+              <div className="col"> <button type="button" className="add btn btn-primary"> + Add New Book</button>
+                <button type="button" className="read btn btn-primary">To Read</button>
+                <button type="button" className="complete btn btn-primary">Books Completed</button>
               </div>
             </div>
           </div>

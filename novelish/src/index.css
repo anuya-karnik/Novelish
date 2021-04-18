@@ -1,3 +1,47 @@
+* {
+    /* CSS HEX */
+--deep-space-sparkle: #335c67;
+--medium-champagne: #fff3b0;
+--indian-yellow: #e09f3e;
+--auburn: #9e2a2b;
+--rosewood: #540b0e;
+}
+
+
 .btn {
     margin: 5px 10px 15px 0px;
 }
+
+.jumbotron{
+    /* background-image: url("Sample-Image.png"); */
+    /* background-image: url("../public/Sample-Image.png"); */
+
+}
+h1 {
+    color: #9E2A2B;
+}
+
+.card {
+    margin: 10px;
+    
+}
+
+.add.btn {
+    background-color: #540b0e;
+    border-color: #540b0e;
+}
+
+.btn-primary {
+    background-color: #e09f3e;
+    border-color: #e09f3e;
+}
+
+.btn-success {
+    background-color: #335c67;
+    border-color: #335c67;
+}
+.btn-danger {
+    background-color: #9E2A2B;
+    border-color: #9E2A2B;
+}
+

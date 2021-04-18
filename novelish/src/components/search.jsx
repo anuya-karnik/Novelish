@@ -5,6 +5,7 @@ function Search() {
 
   // https://reactjs.org/docs/hooks-state.html
   const [keyword, setText] = useState('')
+  // const [data, getBook] =  useState('')
   let responsedata= "";
 
 
@@ -42,13 +43,17 @@ function Search() {
     let itemlist = document.getElementById('get-list')
 
     if (number === 0){
-      cardContainer.innerHTML = "";
+      if (cardContainer) {
+        cardContainer.innerHTML = "";
+        
+      }
+      
     }
 
     if (item) {
 
       let card = document.createElement('div');
-      card.className = 'card shadow cursor-pointer';
+      card.className = 'card shadow cursor-pointer col-sm-2';
 
       let cardBody = document.createElement('div');
       cardBody.className = 'card-body';
@@ -64,13 +69,12 @@ function Search() {
       let btn = document.createElement('button');
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
-      btn.onclick = function (){
-         console.log("something happened!!!!")
+      btn.onclick = function (item){
+         console.log(item);
       }
 
-
+      card.appendChild(ig);
       cardBody.appendChild(title);
-      cardBody.appendChild(ig);
       cardBody.appendChild(btn);
       card.appendChild(cardBody);
       cardContainer.appendChild(card);
@@ -113,8 +117,7 @@ function Search() {
       </div>
 
 
-      <div id="card-container">
-
+      <div id="card-container" className="container">
       </div>
       
       <div className="col-sm-12 text-center" id="results">
