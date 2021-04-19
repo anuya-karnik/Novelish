@@ -92,16 +92,19 @@ function Search() {
 
 
       let btn = document.createElement('button');
-<<<<<<< Updated upstream
-=======
-      let x = 3;
-      btn.id = "buttons";
->>>>>>> Stashed changes
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.setAttribute('data-toggle', "popover");
+
+      let bookImage = ""
+      try {
+        bookImage = item.volumeInfo.imageLinks["thumbnail"]
+      }
+      catch {
+        bookImage = 'Sample-Image.png'
+      }
       btn.onclick = function (){
-        helper(item.volumeInfo["title"], item.volumeInfo["authors"], item.volumeInfo.imageLinks["thumbnail"]);
+        helper(item.volumeInfo["title"], item.volumeInfo["authors"], bookImage);
       
         // popup.style.display = "initial";
       }
@@ -207,15 +210,7 @@ function Search() {
           <p class="pop-up">Novelish</p>
           <h2 class="message">Successfully Added to the List!</h2> */}
 
-<<<<<<< Updated upstream
-      <img class="searchimage" src="search1.png" alt="search"></img>
-
       
-=======
-        </div>
-      </div> */}
-    {/* <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button> */}
->>>>>>> Stashed changes
 
     </div>
   );
