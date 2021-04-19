@@ -116,8 +116,8 @@ function Search() {
 
   return (
     <div className="search">
-      <div className="jumbotron text-center">
-        <h1>Search page</h1>
+      <div className="jumbotron text-center" style ={{backgroundImage: "url(/book4.png)" }}>
+        <h1 class="other">Search page</h1>
       </div>
       <div className="container">
         <div className="row">
@@ -140,13 +140,14 @@ function Search() {
         </div>
       </div>
 
-
       <div id="card-container" className="results-grid">
       </div>
       
       <div className="col-sm-12 text-center" id="results">
         <ul id="get-list" className="output-words"/>
       </div>
+
+      <img class="searchimage" src="search1.png"></img>
 
       
 

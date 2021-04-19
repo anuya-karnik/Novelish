@@ -3,8 +3,8 @@ import React from "react";
 function About() {
   return (
     <div className="about">
-        <div className="jumbotron text-center">
-            <h1>About page</h1>
+        <div className="jumbotron text-center" style={{backgroundImage: "url(/book2.png)" }}>
+            <h1 class="other">About page</h1>
         </div>
         <div className="container">
             <div className="row">
