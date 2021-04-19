@@ -92,11 +92,45 @@ function Search() {
 
 
       let btn = document.createElement('button');
+<<<<<<< Updated upstream
+=======
+      let x = 3;
+      btn.id = "buttons";
+>>>>>>> Stashed changes
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
+      btn.setAttribute('data-toggle', "popover");
       btn.onclick = function (){
         helper(item.volumeInfo["title"], item.volumeInfo["authors"], item.volumeInfo.imageLinks["thumbnail"]);
+      
+        // popup.style.display = "initial";
       }
+
+      // btn.addEventListener('click',
+      //   function() {
+      //     // document.querySelector('.bg-modal').style.display = 'flex';
+      //     let modal = document.createElement("div");
+      //     modal.className = "bg-modal";
+      //     let modalcontent = document.createElement("div");
+      //     modalcontent.className = "modal-content";
+      //     let close = document.createElement("div");
+      //     close.className = "close";
+      //     let popup = document.createElement("p");
+      //     popup.className = "pop-up";
+      //     let message = document.createElement("h2");
+      //     message.className = "message";
+
+      //     modalcontent.append(close)
+      //     modalcontent.append(popup)
+      //     modalcontent.append(message)
+
+      //     modal.append(modalcontent)
+      //     card.appendChild(modal)
+
+
+      //   });
+
+
 
       card.appendChild(ig);
       cardBody.appendChild(title);
@@ -132,6 +166,8 @@ function Search() {
 
   }
 
+  
+
   return (
     <div className="search">
       <div className="jumbotron text-center" style ={{backgroundImage: "url(/book4.png)" }}>
@@ -139,6 +175,7 @@ function Search() {
       </div>
       <div className="container">
         <div className="row">
+        <img class="searchimage" src="search1.png"></img>
           <div className="col-sm-12 text-center">
             <p>
               Page for Searching Books and Adding them to a To-Read List
@@ -164,13 +201,25 @@ function Search() {
       <div className="col-sm-12 text-center" id="results">
         <ul id="get-list" className="output-words"/>
       </div>
+      {/* /* <div id="confirm" class="bg-modal" style="display:none;">
+        <div class="modal-content">
+          <div class="close">+</div>
+          <p class="pop-up">Novelish</p>
+          <h2 class="message">Successfully Added to the List!</h2> */}
 
+<<<<<<< Updated upstream
       <img class="searchimage" src="search1.png" alt="search"></img>
 
       
+=======
+        </div>
+      </div> */}
+    {/* <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button> */}
+>>>>>>> Stashed changes
 
     </div>
   );
 }
+
 
 export default Search;
