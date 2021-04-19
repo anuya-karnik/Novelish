@@ -92,10 +92,11 @@ function Search() {
 
 
       let btn = document.createElement('button');
+      let x = 3;
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.onclick = function (){
-        helper(item.volumeInfo["title"], item.volumeInfo["title"]);
+        helper(item.volumeInfo["title"], item.volumeInfo["authors"], item.volumeInfo.imageLinks["thumbnail"]);
       }
 
       card.appendChild(ig);
@@ -117,12 +118,17 @@ function Search() {
 
   }
 
-  function helper(x, y){
+  function helper(x, y, thumbnail){
+    let newDate =  new Date();
+    console.log(newDate);
+   
     var userData = {
       'bookname': x,
-      'author': y
+      'author': y,
+      'picture': thumbnail,
+      'start': newDate,
+      'status': "a"
     }
-    console.log('reached here in helper')
     fire.database().ref('user-input/data1').push(userData);
 
   }

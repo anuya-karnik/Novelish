@@ -154,7 +154,9 @@ function Home() {
       removeBook(key);
     }
 
-    readlist.append(card)
+    if (readlist) {
+      readlist.append(card)
+    }
     card.append(cardBody)
     cardBody.append(cardTitle)
     cardBody.append(cardSubtitle)
