@@ -1,12 +1,12 @@
 import React from "react";
 import fire from "../fire";
-import Flash from 'react-reveal/Flash';
 
 function Home() {
 
-  window.addEventListener('load', event =>{
+  window.addEventListener('load', event => {
     console.log('dbget called')
     dbget()
+    updateCurrentBook()
   })
 
   // https://reactjs.org/docs/hooks-state.html
@@ -58,29 +58,30 @@ function Home() {
   function updateCurrentBook() {
 
     let curBookRef = fire.database().ref('user-input/curRead')
-    let book = {}
 
     curBookRef.on('value',
       function (snapshot) {
         console.log(snapshot.val())
         snapshot.forEach(function (data) {
           //only has one book
-          book = data.val()
+          let book = data.val()
+          console.log('got book:' + book['author'], book['bookname'])
+
+          // let curImage = ""
+          let curTitle = document.getElementById('current-bookname')
+          curTitle.innerHTML = book['bookname']
+          console.log(book['bookname'])
+
+          let curAuthor = document.getElementById('current-author')
+          curAuthor.innerHTML = book['author']
+          console.log(book['author'])
+          //get the book from the database
         })
       },
 
       function (errorObject) {
         console.log("The read failed" + errorObject.code)
       })
-
-    // let curImage = ""
-    let curTitle = document.getElementById('current-bookname')
-    curTitle.innerHTML = book['bookname']
-
-    let curAuthor = document.getElementById('current-author')
-    curAuthor.innerHTML = book['author']
-    //get the book from the database
-
   }
 
   function removeBook(key) {
@@ -219,7 +220,7 @@ function Home() {
       <div className="home container">
         <div className="row">
           <div id="current-card" className="currentread col-4">
-            <Flash>
+
             <div className="card mb-3">
               <img id="current-image" src="Sample-Image.png" className="card-img-top" alt="sample" />
               <div className="left card-body">
@@ -229,7 +230,6 @@ function Home() {
                 <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
-            </Flash>
           </div>
           <div id="readlist" className="toread col-8">
             <div className="list-controls">
