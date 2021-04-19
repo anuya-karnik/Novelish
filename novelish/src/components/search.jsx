@@ -70,7 +70,14 @@ function Search() {
       aut.className = "text-muted";
 
       let des = document.createElement('p');
-      des.innerText = item.searchInfo["textSnippet"];
+      try {
+        des.innerText = item.searchInfo["textSnippet"];
+      }
+      catch {
+        console.log('text snippet not available')
+        des.innerText = 'Not Available';
+      }
+      
       des.className = "text-muted";
 
       let cat = document.createElement('p');
@@ -79,7 +86,6 @@ function Search() {
 
 
       let btn = document.createElement('button');
-      let x = 3;
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.onclick = function (){
@@ -110,6 +116,7 @@ function Search() {
       'bookname': x,
       'author': y
     }
+    console.log('reached here in helper')
     fire.database().ref('user-input/data1').push(userData);
 
   }

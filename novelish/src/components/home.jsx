@@ -2,10 +2,11 @@
 import fire from "../fire";
 
 function Home() {
-  window.addEventListener('load', (event) => {
-    dbget();
-  })
-
+  
+  document.addEventListener("DOMContentLoaded", function (event) {
+    console.log('calling dbget')
+    dbget()
+  });
   // https://reactjs.org/docs/hooks-state.html
 
   // const [userInput, setText] = useState('');
@@ -35,7 +36,7 @@ function Home() {
     }
 
     console.log(bookname, author)
-    
+
     let curBookRef = fire.database().ref('user-input/curRead')
     curBookRef.remove()
       .then(function () {
@@ -58,17 +59,17 @@ function Home() {
     let book = {}
 
     curBookRef.on('value',
-    function (snapshot) {
-      console.log(snapshot.val())
-      snapshot.forEach(function (data) {
-        //only has one book
-        book = data.val()
-      })
-    },
+      function (snapshot) {
+        console.log(snapshot.val())
+        snapshot.forEach(function (data) {
+          //only has one book
+          book = data.val()
+        })
+      },
 
-    function (errorObject) {
-      console.log("The read failed" + errorObject.code)
-    })
+      function (errorObject) {
+        console.log("The read failed" + errorObject.code)
+      })
 
     // let curImage = ""
     let curTitle = document.getElementById('current-bookname')
@@ -81,7 +82,7 @@ function Home() {
   }
 
   function removeBook(key) {
-    let remBookRef = fire.database().ref('user-input/data1/'+ key)
+    let remBookRef = fire.database().ref('user-input/data1/' + key)
     remBookRef.remove()
       .then(function () {
         console.log("Book Removed From List")
@@ -98,8 +99,9 @@ function Home() {
   function createCards(item, key) {
     //readlist column
     let readlist = document.getElementById('readlist')
-
-    let card_id =  document.createElement('div')
+      
+    //card id
+    let card_id = document.createElement('div')
     card_id.style = 'display:none'
     card_id.innerHTML = key
 
@@ -157,12 +159,13 @@ function Home() {
 
   // https://firebase.google.com/docs/database/admin/retrieve-data#orderbychild
   function dbget() {
+    console.log('reached in dbget')
     fire.database().ref('user-input/data1').on('value',
 
       function (snapshot) {
         console.log(snapshot.val())
         snapshot.forEach(function (data) {
-          createCards(data.val(), data.key)
+          setTimeout(createCards(data.val(), data.key), 3000)
         })
       },
 
@@ -199,8 +202,8 @@ function Home() {
       <div className="jumbotron text-center" style={{ backgroundImage: "url(/book.jpeg)" }}>
         {/* <img class="bg" src="book.jpeg"></img> */}
         <div class="overlay">
-        <h1 class="welcome">Welcome to Novelish <span class = "blink"> |</span></h1>
-       <h3>Your Space to Read, Grow and Explore</h3></div>
+          <h1 class="welcome">Welcome to Novelish <span class="blink"> |</span></h1>
+          <h3>Your Space to Read, Grow and Explore</h3></div>
 
       </div>
       <div className="home container">
