@@ -1,5 +1,6 @@
-// import React, { useState } from "react";
+import React from "react";
 import fire from "../fire";
+import Flash from 'react-reveal/Flash';
 
 function Home() {
 
@@ -7,6 +8,7 @@ function Home() {
     console.log('dbget called')
     dbget()
   })
+
   // https://reactjs.org/docs/hooks-state.html
 
   // const [userInput, setText] = useState('');
@@ -217,6 +219,7 @@ function Home() {
       <div className="home container">
         <div className="row">
           <div id="current-card" className="currentread col-4">
+            <Flash>
             <div className="card mb-3">
               <img id="current-image" src="Sample-Image.png" className="card-img-top" alt="sample" />
               <div className="left card-body">
@@ -226,6 +229,7 @@ function Home() {
                 <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
               </div>
             </div>
+            </Flash>
           </div>
           <div id="readlist" className="toread col-8">
             <div className="list-controls">

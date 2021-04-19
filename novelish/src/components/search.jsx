@@ -49,7 +49,6 @@ function Search() {
     }
 
     if (item) {
-
       let card = document.createElement('div');
       card.className = 'card  align-items-center';
 

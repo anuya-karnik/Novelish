@@ -9,8 +9,7 @@ function About() {
         <div className="container">
             <div className="row">
                 <div className="col-sm-12 text-center">
-                <img class="image" src="about.png"></img>
-
+                <img class="image" src="about.png" alt="about"></img>
                 </div>
             </div>
         </div>
