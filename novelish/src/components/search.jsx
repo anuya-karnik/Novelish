@@ -61,7 +61,13 @@ function Search() {
       title.className = 'card-title';
 
       let ig = document.createElement('img');
+      try {
       ig.src = item.volumeInfo.imageLinks["thumbnail"];
+      }
+      catch {
+        ig.src = "Sample-Image.png"
+        console.log('not available - sample image used')
+      }
       ig.className = 'card-img-top';
       ig.id = 'bookimage';
 

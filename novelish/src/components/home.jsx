@@ -2,11 +2,11 @@
 import fire from "../fire";
 
 function Home() {
-  
-  document.addEventListener("DOMContentLoaded", function (event) {
-    console.log('calling dbget')
+
+  window.addEventListener('load', event =>{
+    console.log('dbget called')
     dbget()
-  });
+  })
   // https://reactjs.org/docs/hooks-state.html
 
   // const [userInput, setText] = useState('');
@@ -82,6 +82,7 @@ function Home() {
   }
 
   function removeBook(key) {
+    // let remCard = document.getElementById(key)
     let remBookRef = fire.database().ref('user-input/data1/' + key)
     remBookRef.remove()
       .then(function () {
@@ -90,16 +91,20 @@ function Home() {
       .catch(function (error) {
         console.log("Remove failed: " + error.message)
       })
+
+    window.location.reload(true);
   }
 
-  function doneBook() {
-
+  function doneBook(key) {
+    let doneCard = document.getElementById(key)
+    console.log('done reading with ' + key)
+    doneCard.style.backgroundColor = "#C7E5D3"
   }
 
   function createCards(item, key) {
     //readlist column
     let readlist = document.getElementById('readlist')
-      
+
     //card id
     let card_id = document.createElement('div')
     card_id.style = 'display:none'
@@ -107,6 +112,7 @@ function Home() {
 
     let card = document.createElement('div')
     card.className = ('card')
+    card.id = key
 
     let cardBody = document.createElement('div')
     cardBody.className = ('card-body container')
@@ -136,7 +142,7 @@ function Home() {
     doneRead.innerHTML = 'Done Reading!'
     //TODO: doneRead onClick function goes here
     doneRead.onclick = function () {
-      doneBook();
+      doneBook(key);
     }
 
     let remRead = document.createElement('button')
@@ -222,7 +228,8 @@ function Home() {
           <div id="readlist" className="toread col-8">
             <div className="list-controls">
               <h3 className="col">My Reading List</h3>
-              <div className="col"> <button type="button" className="add btn btn-primary"> + Add New Book</button>
+              <div className="col">
+                <button type="button" className="add btn btn-primary"> + Add New Book</button>
                 <button type="button" className="read btn btn-primary">To Read</button>
                 <button type="button" className="complete btn btn-primary">Books Completed</button>
               </div>
