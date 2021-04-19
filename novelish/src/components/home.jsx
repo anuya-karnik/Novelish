@@ -184,7 +184,8 @@ function Home() {
           </ul>
         </div>
       </div> */}
-      <div className="jumbotron text-center">
+      <div className="jumbotron text-center" style={{ backgroundImage: "url(/book.jpeg)" }}>
+        {/* <img class="bg" src="book.jpeg"></img> */}
         <h1>Welcome to Novelish</h1>
         <h3>Your Space to Read, Grow and Explore</h3>
 
@@ -194,7 +195,7 @@ function Home() {
           <div id="current-card" className="currentread col-4">
             <div className="card mb-3">
               <img id="current-image" src="Sample-Image.png" className="card-img-top" alt="sample" />
-              <div className="card-body">
+              <div className="left card-body">
                 <h5 id='current-bookname' className="card-title mb-3">Currently Read Book Title</h5>
                 <h6 id='current-author' className="card-subtitle mb-2 text-muted">Currently Read Book Title</h6>
                 {/* Maybe Use a Library for Saving Updated Time */}

@@ -39,11 +39,11 @@
     font-size: 30px;
 }
 .jumbotron{
-    /* background-image: url("Sample-Image.png"); */
-    /* background-image: url("../public/Sample-Image.png"); */
+    /* background-image: url("/book.jpeg"); */
+    /* background-image: url("../public/book.jpeg"); */
 }
 h1 {
-    color: #000000;
+    color: #ffffff;
     /* font-family: 'Dancing Script', cursive;
      */
      font-family: 'Amatic SC', cursive;
@@ -53,6 +53,7 @@ h1 {
 h3 {
     font-family: 'Barlow', sans-serif;
     font-weight: 500;
+    color: #ffffff;
 }
 
 h5 {
@@ -162,8 +163,9 @@ h6 {
 }
 
 input {
-    width: 300px;
+    width: 400px;
     border-radius: 10px;
+    height: 40px;
 }
 
 button {
@@ -172,6 +174,7 @@ button {
     background-color: #75824f;
     color: #ffffff;
     width: 150px;
+    height: 40px;
     font-family: 'Barlow', sans-serif;
 }
 
@@ -179,4 +182,11 @@ p,li{
     font-family: 'Barlow', sans-serif;
 }
 
+.image {
+    width: 1000px;
+    height: 600px;
+}
 
+/* .bg {
+    margin: 0 auto;
+} */
