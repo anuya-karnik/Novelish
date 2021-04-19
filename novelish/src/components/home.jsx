@@ -2,10 +2,11 @@
 import fire from "../fire";
 
 function Home() {
-  window.addEventListener('load', (event) => {
-    dbget();
-  })
 
+  window.addEventListener('load', event =>{
+    console.log('dbget called')
+    dbget()
+  })
   // https://reactjs.org/docs/hooks-state.html
 
   // const [userInput, setText] = useState('');
@@ -35,7 +36,7 @@ function Home() {
     }
 
     console.log(bookname, author)
-    
+
     let curBookRef = fire.database().ref('user-input/curRead')
     curBookRef.remove()
       .then(function () {
@@ -58,17 +59,17 @@ function Home() {
     let book = {}
 
     curBookRef.on('value',
-    function (snapshot) {
-      console.log(snapshot.val())
-      snapshot.forEach(function (data) {
-        //only has one book
-        book = data.val()
-      })
-    },
+      function (snapshot) {
+        console.log(snapshot.val())
+        snapshot.forEach(function (data) {
+          //only has one book
+          book = data.val()
+        })
+      },
 
-    function (errorObject) {
-      console.log("The read failed" + errorObject.code)
-    })
+      function (errorObject) {
+        console.log("The read failed" + errorObject.code)
+      })
 
     // let curImage = ""
     let curTitle = document.getElementById('current-bookname')
@@ -80,19 +81,38 @@ function Home() {
 
   }
 
-  function removeBook() {
+  function removeBook(key) {
+    // let remCard = document.getElementById(key)
+    let remBookRef = fire.database().ref('user-input/data1/' + key)
+    remBookRef.remove()
+      .then(function () {
+        console.log("Book Removed From List")
+      })
+      .catch(function (error) {
+        console.log("Remove failed: " + error.message)
+      })
+
+    window.location.reload(true);
   }
 
-  function doneBook() {
-
+  function doneBook(key) {
+    let doneCard = document.getElementById(key)
+    console.log('done reading with ' + key)
+    doneCard.style.backgroundColor = "#C7E5D3"
   }
 
-  function createCards(item) {
+  function createCards(item, key) {
     //readlist column
     let readlist = document.getElementById('readlist')
 
+    //card id
+    let card_id = document.createElement('div')
+    card_id.style = 'display:none'
+    card_id.innerHTML = key
+
     let card = document.createElement('div')
     card.className = ('card')
+    card.id = key
 
     let cardBody = document.createElement('div')
     cardBody.className = ('card-body container')
@@ -122,7 +142,7 @@ function Home() {
     doneRead.innerHTML = 'Done Reading!'
     //TODO: doneRead onClick function goes here
     doneRead.onclick = function () {
-      doneBook();
+      doneBook(key);
     }
 
     let remRead = document.createElement('button')
@@ -130,11 +150,13 @@ function Home() {
     remRead.className = 'btn btn-danger'
     remRead.innerHTML = 'Remove from List'
     //TODO: curRead onClick function goes here
-    doneRead.onclick = function () {
-      removeBook();
+    remRead.onclick = function () {
+      removeBook(key);
     }
 
-    readlist.append(card)
+    if (readlist) {
+      readlist.append(card)
+    }
     card.append(cardBody)
     cardBody.append(cardTitle)
     cardBody.append(cardSubtitle)
@@ -145,12 +167,13 @@ function Home() {
 
   // https://firebase.google.com/docs/database/admin/retrieve-data#orderbychild
   function dbget() {
+    console.log('reached in dbget')
     fire.database().ref('user-input/data1').on('value',
 
       function (snapshot) {
         console.log(snapshot.val())
         snapshot.forEach(function (data) {
-          createCards(data.val())
+          setTimeout(createCards(data.val(), data.key), 3000)
         })
       },
 
@@ -187,8 +210,8 @@ function Home() {
       <div className="jumbotron text-center" style={{ backgroundImage: "url(/book.jpeg)" }}>
         {/* <img class="bg" src="book.jpeg"></img> */}
         <div class="overlay">
-        <h1 class="welcome">Welcome to Novelish <span class = "blink"> |</span></h1>
-       <h3>Your Space to Read, Grow and Explore</h3></div>
+          <h1 class="welcome">Welcome to Novelish <span class="blink"> |</span></h1>
+          <h3>Your Space to Read, Grow and Explore</h3></div>
 
       </div>
       <div className="home container">
@@ -207,7 +230,8 @@ function Home() {
           <div id="readlist" className="toread col-8">
             <div className="list-controls">
               <h3 className="col">My Reading List</h3>
-              <div className="col"> <button type="button" className="add btn btn-primary"> + Add New Book</button>
+              <div className="col">
+                <button type="button" className="add btn btn-primary"> + Add New Book</button>
                 <button type="button" className="read btn btn-primary">To Read</button>
                 <button type="button" className="complete btn btn-primary">Books Completed</button>
               </div>

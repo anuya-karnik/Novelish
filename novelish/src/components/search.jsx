@@ -61,7 +61,13 @@ function Search() {
       title.className = 'card-title';
 
       let ig = document.createElement('img');
+      try {
       ig.src = item.volumeInfo.imageLinks["thumbnail"];
+      }
+      catch {
+        ig.src = "Sample-Image.png"
+        console.log('not available - sample image used')
+      }
       ig.className = 'card-img-top';
       ig.id = 'bookimage';
 
@@ -70,7 +76,14 @@ function Search() {
       aut.className = "text-muted";
 
       let des = document.createElement('p');
-      des.innerText = item.searchInfo["textSnippet"];
+      try {
+        des.innerText = item.searchInfo["textSnippet"];
+      }
+      catch {
+        console.log('text snippet not available')
+        des.innerText = 'Not Available';
+      }
+      
       des.className = "text-muted";
 
       let cat = document.createElement('p');
@@ -83,7 +96,7 @@ function Search() {
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.onclick = function (){
-        helper(item.volumeInfo["title"], item.volumeInfo["title"]);
+        helper(item.volumeInfo["title"], item.volumeInfo["authors"], item.volumeInfo.imageLinks["thumbnail"]);
       }
 
       card.appendChild(ig);
@@ -105,10 +118,16 @@ function Search() {
 
   }
 
-  function helper(x, y){
+  function helper(x, y, thumbnail){
+    let newDate =  new Date();
+    console.log(newDate);
+   
     var userData = {
       'bookname': x,
-      'author': y
+      'author': y,
+      'picture': thumbnail,
+      'start': newDate,
+      'status': "a"
     }
     fire.database().ref('user-input/data1').push(userData);
 
