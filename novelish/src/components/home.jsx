@@ -186,7 +186,7 @@ function Home() {
       </div> */}
       <div className="jumbotron text-center" style={{ backgroundImage: "url(/book.jpeg)" }}>
         {/* <img class="bg" src="book.jpeg"></img> */}
-        <h1>Welcome to Novelish</h1>
+        <h1 class="welcome">Welcome to Novelish <span class = "blink"> |</span></h1>
         <h3>Your Space to Read, Grow and Explore</h3>
 
       </div>

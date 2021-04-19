@@ -31,9 +31,10 @@
   visibility: visible;
   animation: blinking 1s infinite;
   font-size: 70px;
+  color: white;
 }
 
 @keyframes blinking{
   from, to {color: transparent;}
-  50% {color: black;}
+  50% {color: white;}
 }
