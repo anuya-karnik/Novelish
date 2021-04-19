@@ -76,20 +76,33 @@ function Home() {
 
     let curAuthor = document.getElementById('current-author')
     curAuthor.innerHTML = book['author']
-    //get the book from the database
 
+    //TODO: Update Image and Date
   }
 
-  function removeBook() {
+  function removeBook(key) {
+
+    let remBookRef = fire.database().ref('user-input/data1/'+ key)
+    remBookRef.remove()
+      .then(function () {
+        console.log("Book Removed From List")
+      })
+      .catch(function (error) {
+        console.log("Remove failed: " + error.message)
+      })
   }
 
   function doneBook() {
-
+    
   }
 
-  function createCards(item) {
+  function createCards(item, key) {
     //readlist column
     let readlist = document.getElementById('readlist')
+
+    let card_id =  document.createElement('div')
+    card_id.style = 'display:none'
+    card_id.innerHTML = key
 
     let card = document.createElement('div')
     card.className = ('card')
@@ -130,8 +143,8 @@ function Home() {
     remRead.className = 'btn btn-danger'
     remRead.innerHTML = 'Remove from List'
     //TODO: curRead onClick function goes here
-    doneRead.onclick = function () {
-      removeBook();
+    remRead.onclick = function () {
+      removeBook(key)
     }
 
     readlist.append(card)
@@ -141,16 +154,17 @@ function Home() {
     cardBody.append(curRead)
     cardBody.append(doneRead)
     cardBody.append(remRead)
+    cardBody.append(card_id)
   }
 
   // https://firebase.google.com/docs/database/admin/retrieve-data#orderbychild
   function dbget() {
-    fire.database().ref('user-input/data1').on('value',
 
+    fire.database().ref('user-input/data1').on("value",
       function (snapshot) {
         console.log(snapshot.val())
         snapshot.forEach(function (data) {
-          createCards(data.val())
+          createCards(data.val(), data.key)
         })
       },
 

@@ -111,7 +111,6 @@ function Search() {
       'author': y
     }
     fire.database().ref('user-input/data1').push(userData);
-
   }
 
   return (
