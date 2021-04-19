@@ -29,15 +29,16 @@ function Home() {
 
   // creates a list of items
 
-  function addCurBook(bookname, author) {
+  function addCurBook(bookname, author, image) {
 
     // remove current book from currently reading file
     var curData = {
+      'image': image,
       'bookname': bookname,
       'author': author
     }
 
-    console.log(bookname, author)
+    console.log(bookname, author, image)
 
     let curBookRef = fire.database().ref('user-input/curRead')
     curBookRef.remove()
@@ -67,7 +68,9 @@ function Home() {
           let book = data.val()
           console.log('got book:' + book['author'], book['bookname'])
 
-          // let curImage = ""
+          let curImage = document.getElementById('current-image')
+          curImage.src = book['image']
+
           let curTitle = document.getElementById('current-bookname')
           curTitle.innerHTML = book['bookname']
           console.log(book['bookname'])
@@ -136,7 +139,7 @@ function Home() {
     //TODO: curRead onClick function goes here
     curRead.onclick = function () {
       console.log(item)
-      addCurBook(item["bookname"], item["author"]);
+      addCurBook(item["bookname"], item["author"], item["picture"]);
     }
 
     let doneRead = document.createElement('button')

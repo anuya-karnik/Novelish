@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import request from 'superagent';
 import fire from "../fire";
 
+
 function Search() {
 
   // https://reactjs.org/docs/hooks-state.html
@@ -91,7 +92,6 @@ function Search() {
 
 
       let btn = document.createElement('button');
-      let x = 3;
       btn.className = "btn btn-primary";
       btn.innerHTML = "Add to read list";
       btn.onclick = function (){
@@ -165,7 +165,7 @@ function Search() {
         <ul id="get-list" className="output-words"/>
       </div>
 
-      <img class="searchimage" src="search1.png"></img>
+      <img class="searchimage" src="search1.png" alt="search"></img>
 
       
 
